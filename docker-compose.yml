@@ -11,3 +11,9 @@ services:
       - "traefik.http.routers.bimporto-router.tls=true"
       - "traefik.http.routers.bimporto-router.tls.certresolver=letsencrypt"
       - "traefik.http.services.bimporto-service.loadbalancer.server.port=80"
+    networks:
+      - coolify
+
+networks:
+  coolify:
+    external: true
