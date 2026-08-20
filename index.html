@@ -1,16 +1,321 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TESTING PORTO</title>
-    <style>
-        body { font-family: 'Segoe UI', sans-serif; text-align: center; margin-top: 100px; background: #0f172a; color: #f8fafc; }
-        h1 { color: #38bdf8; }
-        p { color: #94a3b8; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Dimas Bimo — Portfolio</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    html{scroll-behavior:smooth}
+    body{font-family:"Space Grotesk",sans-serif}
+    .mono{font-family:"IBM Plex Mono",monospace}
+    .page{max-width:1080px;margin:auto;padding-left:24px;padding-right:24px}
+    .section{padding:64px 0;border-top:1px solid #00000014}
+    .card{
+      background:#fff;
+      border:1px solid #00000014;
+      border-radius:14px;
+      overflow:hidden;
+      transition:.2s;
+    }
+    .card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 14px 30px #00000010;
+    }
+    .tag{
+      font:12px "IBM Plex Mono",monospace;
+      color:#3d4fe0;
+      background:#eef0fd;
+      padding:4px 8px;
+      border-radius:5px;
+    }
+    .project-image{
+      width:100%;
+      height:210px;
+      object-fit:cover;
+      display:block;
+      cursor:pointer;
+      transition:.25s;
+    }
+    .project-image:hover{transform:scale(1.02)}
+    .project-media{position:relative;overflow:hidden;background:#111}
+    .project-media::after{
+      content:"COMING SOON";
+      position:absolute;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:rgba(16,18,22,.68);
+      color:white;
+      font:500 13px "IBM Plex Mono",monospace;
+      letter-spacing:.14em;
+      backdrop-filter:blur(2px);
+      pointer-events:none;
+    }
+    .coming-link{
+      opacity:.45;
+      pointer-events:none;
+      text-decoration:line-through;
+    }
+    .lightbox{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.82);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+      z-index:100;
+    }
+    .lightbox.active{display:flex}
+    .lightbox-inner{
+      max-width:960px;
+      width:100%;
+      position:relative;
+    }
+    .lightbox img{
+      width:100%;
+      max-height:82vh;
+      object-fit:contain;
+      border-radius:16px;
+      background:#111;
+    }
+    .close-btn{
+      position:absolute;
+      top:-14px;
+      right:-2px;
+      background:#fff;
+      color:#111;
+      border:none;
+      border-radius:999px;
+      width:38px;
+      height:38px;
+      cursor:pointer;
+      font-size:20px;
+      line-height:1;
+      box-shadow:0 8px 20px rgba(0,0,0,.25);
+    }
+  </style>
 </head>
-<body>
-    <h1>INI DIBUAT HANYA UNTUK TESTING PORFOFOLIO !</h1>
+
+<body class="bg-[#f6f6f3] text-[#15171b]">
+
+<header class="sticky top-0 z-50 bg-[#f6f6f3]/90 backdrop-blur border-b border-black/10">
+  <div class="page h-16 flex items-center justify-between">
+    <a href="#" class="mono text-sm font-medium">dimas<span class="text-[#3d4fe0]">.dev</span></a>
+
+    <nav class="hidden md:flex gap-7 mono text-sm text-[#52565c]">
+      <a href="#tentang">tentang</a>
+      <a href="#proyek">proyek</a>
+      <a href="#kontak">kontak</a>
+    </nav>
+
+    <a href="#kontak" class="mono text-xs border border-black px-3 py-2 rounded-md">
+      Hubungi saya
+    </a>
+  </div>
+</header>
+
+<main class="page">
+
+  <section class="py-14">
+    <div class="bg-[#101216] text-white rounded-2xl p-8 md:p-12">
+      <p class="mono text-xs text-[#8fd19e] mb-5">● available for projects</p>
+
+      <h1 class="text-3xl md:text-5xl font-semibold leading-tight max-w-3xl">
+        Saya membangun web yang cepat, rapi, dan enak dipakai.
+      </h1>
+
+      <p class="mono text-sm text-[#9ba0ab] max-w-xl mt-5">
+        Halo, saya Dimas. Saya membuat aplikasi web, dashboard, dan tools internal
+        dari frontend sampai backend.
+      </p>
+
+      <div class="flex gap-3 mt-8">
+        <a href="#proyek" class="mono text-sm bg-[#3d4fe0] px-5 py-3 rounded-lg">Lihat proyek</a>
+        <a href="#kontak" class="mono text-sm border border-white/20 px-5 py-3 rounded-lg">Kontak</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="tentang" class="section">
+    <p class="mono text-xs text-[#3d4fe0] mb-3">// about</p>
+    <h2 class="text-3xl font-semibold mb-8">Tentang saya</h2>
+
+    <div class="grid md:grid-cols-2 gap-10">
+      <div class="text-[#52565c] space-y-4">
+        <p>
+          Saya web developer yang suka membuat aplikasi sederhana,
+          cepat, dan berguna untuk kebutuhan nyata.
+        </p>
+        <p>
+          Fokus saya ada di dashboard, aplikasi internal, API,
+          database, dan deployment.
+        </p>
+      </div>
+
+      <div>
+        <p class="mono text-xs text-[#52565c] mb-4">STACK</p>
+        <div id="skills" class="flex flex-wrap gap-2"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="proyek" class="section">
+    <p class="mono text-xs text-[#3d4fe0] mb-3">// projects</p>
+    <h2 class="text-3xl font-semibold mb-8">Portfolio</h2>
+
+    <!-- TAMPILAN SEMENTARA -->
+    <div class="bg-[#101216] text-white rounded-2xl min-h-[340px] flex flex-col items-center justify-center text-center px-6">
+      <p class="mono text-xs text-[#8fd19e] mb-4">● work in progress</p>
+      <h3 class="text-4xl md:text-6xl font-semibold tracking-tight">COMING SOON</h3>
+      <p class="mono text-sm text-[#9ba0ab] mt-5 max-w-md">
+        Project dan case study sedang saya siapkan.
+      </p>
+    </div>
+
+    <!--
+    =========================================================
+    PROJECT CARD — Buat nanti
+
+    <div id="projects" class="grid md:grid-cols-2 gap-6"></div>
+
+    =========================================================
+    -->
+  </section>
+
+  <section id="kontak" class="section">
+    <div class="bg-[#101216] text-white rounded-2xl p-8 md:p-12">
+      <h2 class="text-3xl font-semibold">Mari bekerja sama.</h2>
+      <p class="mono text-sm text-[#9ba0ab] mt-3 mb-7">
+        Hubungi saya untuk proyek, kolaborasi, atau sekadar ngobrol soal development.
+      </p>
+
+      <div class="mono text-sm flex flex-wrap gap-5">
+        <a href="mailto:nama@email.com">Email ↗</a>
+        <a href="#">GitHub ↗</a>
+        <a href="#">LinkedIn ↗</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="mono text-xs text-center text-[#52565c] py-10">
+  © 2026 Dimas Bimo Prasetyo
+</footer>
+
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+  <div class="lightbox-inner" onclick="event.stopPropagation()">
+    <button class="close-btn" onclick="closeLightbox()">×</button>
+    <img id="lightboxImage" src="" alt="Preview proyek">
+  </div>
+</div>
+
+<script>
+  const skills = [
+    "JavaScript","TypeScript","React","Next.js",
+    "Node.js","Tailwind","PostgreSQL","Git"
+  ];
+
+  // DATA PROJECT DISIAPKAN DULU. CARD MASIH DINONAKTIFKAN.
+  const projects = [
+    {
+      title: "Monitoring Sales",
+      description: "Dashboard monitoring data penjualan dan performa bisnis.",
+      stack: ["PHP","PostgreSQL"],
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+      link: "#"
+    },
+    {
+      title: "Survei & RKM",
+      description: "Aplikasi pencatatan survei harga dan aktivitas kunjungan.",
+      stack: ["Supabase","JavaScript"],
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+      link: "#"
+    },
+    {
+      title: "Dashboard Advisor",
+      description: "Monitoring jadwal, kunjungan, order, dan produktivitas advisor.",
+      stack: ["Node.js","PostgreSQL"],
+      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80",
+      link: "#"
+    },
+    {
+      title: "Web Tools",
+      description: "Kumpulan aplikasi dan tools internal berbasis web.",
+      stack: ["HTML","Tailwind"],
+      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80",
+      link: "#"
+    }
+  ];
+
+  const skillsContainer = document.querySelector("#skills");
+  const projectContainer = document.querySelector("#projects");
+  const lightbox = document.querySelector("#lightbox");
+  const lightboxImage = document.querySelector("#lightboxImage");
+
+  skills.forEach(skill => {
+    skillsContainer.insertAdjacentHTML(
+      "beforeend",
+      `<span class="mono text-xs bg-white border border-black/10 px-3 py-1.5 rounded-md">${skill}</span>`
+    );
+  });
+
+  // projects.forEach(project => {
+  // projectContainer.insertAdjacentHTML("beforeend", `
+  // <article class="card">
+  // <div class="project-media">
+  // <img
+  // src="${project.image}"
+  // alt="${project.title}"
+  // class="project-image"
+  // >
+  // </div>
+  // 
+  // <div class="p-6">
+  // <div class="flex items-center justify-between gap-4 mb-2">
+  // <h3 class="text-lg font-semibold">${project.title}</h3>
+  // <span class="mono text-[11px] border border-black/10 px-2.5 py-1.5 rounded-md text-[#777]">
+  // Soon
+  // </span>
+  // </div>
+  // 
+  // <p class="text-sm text-[#52565c] my-3">${project.description}</p>
+  // 
+  // <div class="flex flex-wrap gap-2 mb-4">
+  // ${project.stack.map(item => `<span class="tag">${item}</span>`).join("")}
+  // </div>
+  // 
+  // <span class="mono text-sm border-b border-black coming-link">Lihat proyek</span>
+  // </div>
+  // </article>
+  // `);
+  // });
+  // 
+
+  function openLightbox(src, title) {
+    lightboxImage.src = src;
+    lightboxImage.alt = title;
+    lightbox.classList.add("active");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove("active");
+    document.body.style.overflow = "";
+  }
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") closeLightbox();
+  });
+</script>
+
 </body>
 </html>
