@@ -4,10 +4,10 @@ services:
     container_name: my-portfolio
     restart: unless-stopped
     ports:
-      - "8081:80" 
+      - "8081:80"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.portfolio.rule=Host(`bimporto.my.id`) || Host(`www.bimporto.my.id`)"
-      - "traefik.http.routers.portfolio.tls=true"
-      - "traefik.http.routers.portfolio.tls.certresolver=letsencrypt"
-      - "traefik.http.services.portfolio.loadbalancer.server.port=80"
+      - "traefik.http.routers.bimporto-router.rule=Host(`bimporto.my.id`) || Host(`www.bimporto.my.id`)"
+      - "traefik.http.routers.bimporto-router.tls=true"
+      - "traefik.http.routers.bimporto-router.tls.certresolver=letsencrypt"
+      - "traefik.http.services.bimporto-service.loadbalancer.server.port=80"
