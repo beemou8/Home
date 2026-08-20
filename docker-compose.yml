@@ -7,7 +7,7 @@ services:
       - "8081:80" 
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.portfolio.rule=Host(`bimoporto.my.id`) || Host(`www.bimoporto.my.id`)"
+      - "traefik.http.routers.portfolio.rule=Host(`bimporto.my.id`) || Host(`www.bimporto.my.id`)"
       - "traefik.http.routers.portfolio.tls=true"
       - "traefik.http.routers.portfolio.tls.certresolver=letsencrypt"
       - "traefik.http.services.portfolio.loadbalancer.server.port=80"
